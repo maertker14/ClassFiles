@@ -1,0 +1,6 @@
+What i need to do for M2:
+	- create a file in M2 that holds information of the user 
+	- create a button in the top right corner to save and load
+	- create a function to parse the file into variables
+	- make load a dropdown with a listing of the numbers created by the user
+	- 

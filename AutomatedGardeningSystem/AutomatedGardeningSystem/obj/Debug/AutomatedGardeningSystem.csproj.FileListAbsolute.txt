@@ -1,0 +1,10 @@
+C:\Users\Matt Aertker\Documents\Old_Desktop\AutomatedGardeningSystem\AutomatedGardeningSystem\bin\Debug\AutomatedGardeningSystem.exe.config
+C:\Users\Matt Aertker\Documents\Old_Desktop\AutomatedGardeningSystem\AutomatedGardeningSystem\bin\Debug\AutomatedGardeningSystem.exe
+C:\Users\Matt Aertker\Documents\Old_Desktop\AutomatedGardeningSystem\AutomatedGardeningSystem\bin\Debug\AutomatedGardeningSystem.pdb
+C:\Users\Matt Aertker\Documents\Old_Desktop\AutomatedGardeningSystem\AutomatedGardeningSystem\obj\Debug\AutomatedGardeningSystem.csprojAssemblyReference.cache
+C:\Users\Matt Aertker\Documents\Old_Desktop\AutomatedGardeningSystem\AutomatedGardeningSystem\obj\Debug\AutomatedGardeningSystem.Form1.resources
+C:\Users\Matt Aertker\Documents\Old_Desktop\AutomatedGardeningSystem\AutomatedGardeningSystem\obj\Debug\AutomatedGardeningSystem.Properties.Resources.resources
+C:\Users\Matt Aertker\Documents\Old_Desktop\AutomatedGardeningSystem\AutomatedGardeningSystem\obj\Debug\AutomatedGardeningSystem.csproj.GenerateResource.cache
+C:\Users\Matt Aertker\Documents\Old_Desktop\AutomatedGardeningSystem\AutomatedGardeningSystem\obj\Debug\AutomatedGardeningSystem.csproj.CoreCompileInputs.cache
+C:\Users\Matt Aertker\Documents\Old_Desktop\AutomatedGardeningSystem\AutomatedGardeningSystem\obj\Debug\AutomatedGardeningSystem.exe
+C:\Users\Matt Aertker\Documents\Old_Desktop\AutomatedGardeningSystem\AutomatedGardeningSystem\obj\Debug\AutomatedGardeningSystem.pdb

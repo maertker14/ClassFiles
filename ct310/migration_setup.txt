@@ -1,0 +1,27 @@
+<?php
+
+namespace Fuel\Migrations
+
+class Migration_20190122130233
+{
+	public $migration_number = "20190422130233";
+	public $description = "Add some random column to some table";
+
+	public function up() {
+		//sql query to add the column
+	  \DBUtil::create_table('posts', array(
+			'id' => array('type' => 'varchar', 'constraint' => 100),
+			'body' => array('type' => 'text'),
+	  ), array('id'));
+	}
+	public funtion down() {
+		//sql query to remove to column
+		\DBUtil::drop_table('posts');
+	}
+}
+create a tble called tst that has at least 7 columns of varying types (run down drops this table)
+Remove one of those columns from the table (run down will add it back in)
+Alter one of the column's types in some significant way (change INT to VARCHAR or similar)
+Clarification on the showing create table statement, that is only for table `test` and is only for grading THIS assignment.
+ -> go into sql
+ show create table encounters;
