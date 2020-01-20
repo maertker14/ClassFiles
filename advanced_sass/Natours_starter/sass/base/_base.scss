@@ -1,0 +1,45 @@
+*,
+*::after, /*we say after and before to make sure the psuedoelements behave
+            the same as our other elements on the webpage for defaults*/
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /*this makes all elements on the page inherit the box-size declared in the body*/
+}
+
+html {
+    //this defines what 1rem is (10px) 10/16 = 62.5%
+    font-size: 62.6%; /*the reason you do % here is because you don't want to get 
+                    rid of the users chance to change default font-size (zooming)
+     this is to declare how many rems i.e. 1 rem = 10px in this case */
+
+     @include respond(big-desk) {//width > 1800
+         font-size: 75%; // here we want 1 rem = 12px, 12/16=75%
+     }
+     @include respond(tab-land) {//width < 1200
+         font-size: 56.25%; // here we want 1 rem = 9px, 9/16=58%
+     }
+     @include respond(tab-port) { //width < 900
+         font-size: 50%; // here we want 1 rem = 8px, 8/16=58%
+     }
+     
+
+
+}
+
+body {
+    box-sizing: border-box; // a border box makes the w/height the span of the border plus the padding
+    padding: 3rem;
+
+     @include respond(tab-port) { //width < 900
+        padding: 0;
+    }
+
+
+    /*border-box: this helps define height and width for the whole box including padding/border */
+}
+
+::selection { // this is for when the user highlights text and you can set the highlight color and text-color
+    background-color: $color-primary;
+    color: $color-white;
+}

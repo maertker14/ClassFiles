@@ -1,0 +1,42 @@
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/base"; //importing a partial
+@import "base/animations";
+@import "base/typography";
+@import "base/utility";
+
+@import "components/button";
+@import "components/composition";
+@import "components/story";
+@import "components/form";
+@import "components/popup";
+@import "components/feature-box";
+@import "components/bg-video";
+@import "components/cards";
+
+@import "layout/header";
+@import "layout/navigation";
+@import "layout/grid";
+@import "layout/footer";
+
+@import "pages/home";
+
+
+/*
+Notes:
+-an absolutely positioned element can overlap other elements
+occupying the same space using stacking context
+-Stacking context determines which element is rendered in which order
+ 
+************************
+float grid notes:
+ 
+
+*/
+
+
+
+
+

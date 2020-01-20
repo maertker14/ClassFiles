@@ -1,0 +1,61 @@
+/*NOTES:
+a clearfix appends a pseudo element after the element
+which will then "clear" these floats in grid.scss .col-1-of-2
+
+*/
+
+
+@mixin clearfix { 
+    &::after { // must use :: for psuedo mixin selectors
+        content: ""; //always need to specify content property otherwise
+                    // the psuedo element will not appear on the page and 
+                    // we want it empty because we dont want to see this on
+                    // the page
+        display: table; //std for clearfix
+        clear: both; //what actually performs clearfix, will work for float left or right
+    }
+}
+
+@mixin h_w_center {
+        top: 50%;
+        left: 50%;
+        transform: $center-me;
+}
+
+//MEDIA QUERY MANAGER
+/*
+0 - 600px:      Phone
+600 - 900:      Tablet portrait
+900 - 1200:     Tablet landscape
+1200 - 1800:    This is where our normal styles apply in this desktop first approach
+1800 + :        Big Desktop
+
+$breakpoint argument choices: 
+- phone
+- tab-port
+- tab-land
+- big-desk
+
+ORDER OF MEDIA QUERY WRITING: Base > typography > general layout > page layout > components
+
+*/
+@mixin respond($breakpoint) {
+//use ems here not rems for media quieries
+//they do not convert to set font-sizes in media queries
+//1em = 16px
+
+//good practice is to say only screen and so the queiries don't apply when user tries to print for example
+    @if $breakpoint == big-desk {
+        @media only screen and (min-width: 112.5rem) { @content }; //1800+
+    }
+    @if $breakpoint == tab-land {
+        @media only screen and (max-width: 75em) { @content }; //1200
+    }
+    @if $breakpoint == tab-port {
+        @media only screen and (max-width: 56.25em) { @content }; //900px
+    }
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 37.5em) { @content }; //600px
+    }
+
+}

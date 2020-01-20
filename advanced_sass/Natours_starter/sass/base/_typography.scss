@@ -1,0 +1,94 @@
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    /* font-size: 1.6rem; */
+    line-height: 1.7; /*1.7 times bigger than previous line height*/
+    color: $color-grey-dark;
+     /*this puts padding around the whole webpage*/
+    
+    /*border-box: this helps define height and width for the whole box including padding/border */
+}
+.heading-primary {
+    color: $color-white;
+    text-transform: uppercase;
+    
+    backface-visibility: hidden;/*this is to make the animation not glitch*/
+    margin-bottom: 6rem; /*to put padding between h1 and btn*/
+
+    &--main {
+        display: block;
+        font-size:6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+
+        /*these are the properties required to make
+        an animation work*/
+        animation-name: moveinleft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out; /*this makes it
+        fast at first then slower towards the end*/
+        /* animation-iteration-count: 3; to make it happen
+        x amount of times use this */
+
+        @include respond(phone) {
+            letter-spacing: 1rem;
+            font-size: 5rem;
+
+        }
+
+    }
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.74rem;
+
+        /* shorter syntax for animation in main*/
+        animation: moveinright 1s ease-out;
+
+         @include respond(phone) {
+            letter-spacing: .5rem;
+        }
+
+    }
+}
+
+.heading-secondary {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block; // we use inline block so it doesnt do the gradient on the background
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    // to make the gradient apper as the texts color:
+    -webkit-background-clip: text;
+    // then must make the text transparent to see gradient
+    color: transparent;
+    transition: .2s; //this makes animation not glitchy fast
+    letter-spacing: 2px;
+
+    @include respond(tab-port) {
+        font-size: 3rem;
+    }
+    @include respond(phone) {
+        font-size: 2.5rem;
+    }
+
+    // to make the effect happen:
+    &:hover {
+        transform: skewY(2deg) skewX(15deg) scale(1.1);
+        text-shadow: .5rem 1rem 2rem rgba($color-black, .2);//.5 in x, 1 in y, 20px of blur, color 
+    }
+}
+
+.heading-tertiary {
+    font-size: $default-font-size;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.paragraph {
+    font-size: $default-font-size;
+    &:not(:last-child) { //selecting everything but the last child
+        margin-bottom: 3rem;
+    }
+}
