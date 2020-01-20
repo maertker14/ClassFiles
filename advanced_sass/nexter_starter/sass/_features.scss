@@ -1,0 +1,36 @@
+//one big grid for which the six grid items reside
+//each feature is a grid container in itself
+//which then contains the three grid items: icon, heading, and text
+//grid allows us to nest as many grids as we need
+.features {
+    // background-color: $color-grey-light-2;
+
+    margin: 15rem 0;
+    grid-column: center-start / center-end;
+    grid-gap: 6rem;
+    display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));//auto-fit creates as many tracks as can fit based on width we define with the minmax function
+    //our items will be placed in an implicit grid as opposed to explicit cuz we don't define the rows
+    align-items: start; // this is so the content in the grid item is pushed to the top of the cell
+}
+
+.feature {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    //rows don't need to be defined
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    &__icon {
+        fill: $color-primary; //fill because its an svg
+        width: 4.5rem;
+        height: 4.5rem;
+        grid-row: 1 / span 2; //-1 only works on explicit grids
+        transform: translateY(-1rem);
+    }
+
+    &__text {
+        font-size: 1.7rem;
+    }
+}

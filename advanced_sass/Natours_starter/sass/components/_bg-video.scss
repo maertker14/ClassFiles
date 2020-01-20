@@ -1,0 +1,17 @@
+.bg-video {
+    position: absolute; //we set this one absolute and then the whole section relative
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -20;
+    opacity: .25; 
+    overflow: hidden;
+
+    &__content {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; //element fills entire parent while still maintaining its aspect (width/height) ratio
+
+    }
+}

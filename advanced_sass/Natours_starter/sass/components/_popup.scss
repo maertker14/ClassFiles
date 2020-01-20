@@ -1,0 +1,139 @@
+.popup {
+    height: 100vh;
+    width: 100%;
+    // margin-top: 10rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($color-black, .8);
+    z-index: 2500;
+    //with display none we can't animate it so we use:
+    opacity: 0; //if we just use this the text and content will be there still just not visible so we use:
+    visibility: hidden;
+    transition: all .3s;
+    // overflow-y: scroll;
+    
+
+    @supports(-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        background-color: rgba($color-black, .3);
+    }
+
+   
+
+    &__content {
+        width: 75%;
+        height: 80%;
+        // padding: 100rem 0;
+        background-color: $color-white;
+        box-shadow: 0 2rem 4rem rgba($color-black, .2);
+        position: absolute;
+        @include h_w_center;
+        overflow: hidden; //to make sure the photo doesnt overflow the border radius
+        border-radius: 3px;
+        display: table;//this is associated with the table-cell display
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+        transition: all .4s .2s;
+        @include respond(tab-land) {
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(105deg, 
+                rgba(transparent, .2) 0%, 
+                rgba(transparent, .2) 40%, 
+                $color-white 50%),
+                url(../img/nat-8.jpg);
+                background-size: cover;
+        }
+        @include respond(tab-port) {
+            width: 100%;
+            height: 100%;
+            background-color: $color-white;
+        }
+    }
+
+    &__left {
+        width: 33.333333%;
+        display: table-cell;
+        @include respond(tab-port) {
+            display: none;
+        }
+
+    }
+    &__right {
+        display: table-cell;
+        
+
+        width: 66.66666667%;
+        vertical-align: middle;//to alight content in middle of table cell
+        padding: 3rem 5rem;
+        @include respond(tab-land) {
+            width: 45%;
+        }
+        @include respond(tab-port) {
+             background-image: linear-gradient(105deg, 
+                rgba($color-white, .9) 0%, 
+                rgba($color-white, .9) 100%, 
+                $color-white 100%),
+                url(../img/nat-8.jpg);
+                background-size: cover;
+                width: 100%;
+        }
+    }
+    &__img {
+        display: block;
+        width: 100%;
+        @include respond(tab-land) {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+    &__text {
+        
+        font-size: 1.4rem;
+        margin-bottom: 4rem;
+
+        -moz-column-count: 2;
+        -moz-column-gap: 4rem; //1em = 14px which ems represent the current font size
+        -moz-column-rule: 1px solid $color-grey-light-2;
+
+        column-count: 2;
+        column-gap: 4rem; //1em = 14px which ems represent the current font size
+        column-rule: 1px solid $color-grey-light-2;
+
+        hyphens: auto !important;
+        -webkit-hyphens: auto !important;
+        -moz-hyphens: auto !important;
+        -ms-hyphens: auto !important;
+    }
+/////      OPEN STATES       ////////
+    &:target { //the targeted urls
+        //when the anchor tag directs to this popup make visible
+        opacity: 1;
+        visibility: visible;
+    }
+    &:target &__content {//WHEN POPUP BECOMES TARGET EDIT CONTENT
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    &__close {
+        &:link,
+        &:visited {
+            color: $color-grey-dark;
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all .2s;
+            line-height: 1;
+        }
+        &:hover {
+            color: $color-primary;
+        }
+    }
+
+}
+ 

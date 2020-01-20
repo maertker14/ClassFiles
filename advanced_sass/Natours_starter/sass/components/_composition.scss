@@ -1,0 +1,64 @@
+.composition {
+    position: relative;
+    &__photo {
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        border-radius: 2px;
+        position: absolute; //we do this b/c we want the pics ontop of each other
+        //placed according to a reference and since we want it to be composition 
+        //we set composition to relative
+        z-index: 10;
+        transition: all .2s;
+        outline-offset: 2rem;
+
+        @include respond(tab-port) {
+            float: left; //for this float to work we must have a relative postition
+            position: relative;
+            width: 33.3333333%;
+            box-shadow: 0 1.5rem 3rem rgba($color-black, .2);
+        }
+
+        &--p1 {
+            @include respond(tab-port) {
+                top: 0;
+                transform: scale(1.2);
+            }
+            left: 0;
+            top: -2rem;//moves upwards
+        }
+        &--p2 {
+            @include respond(tab-port) {
+                top: -1rem;
+                transform: scale(1.3);
+                z-index: 100;
+            }
+            right: 0;
+            top: 2rem;//moves upwards
+        }
+        &--p3 {
+            @include respond(tab-port) {
+                left: 0;
+                transform: scale(1.1);
+                top: 1rem;
+            }
+            left: 20%;
+            top: 10rem;//moves upwards
+        }
+
+        &:hover {
+            outline: 1.5rem solid $color-primary; //use this to put spave between border and image
+            z-index: 20;
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+        }
+
+        
+    }
+
+    &:hover &__photo:not(:hover) {//any photo not currently being hovered over
+        transform: scale(.95);
+    }
+
+    
+
+}

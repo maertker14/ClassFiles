@@ -1,0 +1,86 @@
+/*Notes:
+top row has zero pixel height and this is because all of the 
+child elements are floated and so the height collapses
+and becomes zero
+WHat do we do against that? -> The clearfix hack ->
+-> so write a mixin in mixins.scss
+->@include clearfix is the call for the mixin
+----------
+to give all columns a group of similar properties use attribUte selector
+[class*="col-"] {} this is a selector to select all classes that CONTAIN 'col-' 
+-> $= is any class that ends with this selector
+-> can also do href, alt or lots of other selectors
+
+**************
+why does my picture under the story section not fit all the way to the figure like
+jonas' does in video 57 minute 17:50
+
+*/
+
+.row {
+    //using max-width here is a must because it must be able to 
+    // adjust with the page
+    max-width: $grid-width;//1140px b/c 1 rem (in this case) =10px
+    // background-color: #eee;
+    margin: 0 auto; //this is to always center it in the viewport
+    //in other words top/bottom is 0 & left/right is auto
+    // this means the browser will automatically figure out the margin
+    // we want to use on the left/right & since it is auto
+    // the margin for the left and the right will be calculated as the same value
+    // margin-bottom: $gutter-vertical;
+    &:not(last-child)  {
+        margin-bottom: $gutter-vertical;
+
+        @include respond(tab-port) {//900px
+            margin-bottom: $gutter-vertical-small;
+        }
+    }
+
+    @include respond(tab-port) {//900px
+            max-width: 50rem;
+            padding: 0 3rem;
+    }
+
+    @include clearfix; // this is the mixin
+    
+    [class^="col-"] { //this selects all class attributes
+                    // that start with 'col-' look at this symbol ^= (start with)
+        // background-color: orangered;
+        float: left;//since we are using a float layout we need to float these columns
+        &:not(:last-child) { //this is to make all but the last column have a right margin of 80px or $gutter-horiz
+            margin-right: $gutter-horizontal;
+
+            @include respond(tab-port) {//we do this here because we no longer will have more than 1 col after 900px so we don't want a margin
+                margin-right: 0;
+                margin-bottom: $gutter-vertical-small;
+            }
+        }
+
+        @include respond(tab-port) {//we do this here because we want only one column after 900px
+            width: 100% !important;//set width of each col to 100%
+        }
+
+    }
+
+    .col-1-of-2 {
+        width: calc((100% - #{$gutter-horizontal}) / 2 ); //this allows us to make calculations with mixed units
+        
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - (#{$gutter-horizontal}*2))/3);
+    }
+    .col-1-of-4 {
+        width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+    }
+    .col-2-of-3 {
+        width: calc(2 * ((100% - 2 * #{$gutter-horizontal})/3) + #{$gutter-horizontal});
+    }
+    .col-2-of-4 {
+        width: calc(2* ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal});
+    }
+    .col-3-of-4 {
+        width: calc(3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + (2 * #{$gutter-horizontal}));
+    }
+    
+}

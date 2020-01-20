@@ -1,0 +1,111 @@
+.btn {
+    &,//this applies to our button not the link or visited for the actual button element
+    &:link, 
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem; /* top/bottom 15px,
+        right/left 40px..... if 4 numbers used:
+        top, right, bottom, left side in that order*/
+        display: inline-block; /*this because it should be
+        in line with the element above it*/
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative;
+        font-size: $default-font-size;
+
+        //Change for the <button> element
+        border: none;
+        cursor: pointer;
+    }
+    &:hover {
+        transform: translateY(-3px); /*to go up must use negative*/
+        box-shadow: 0 1rem 2rem rgba($color-black,.2); /*zero in x direction 10 in y, 20px blur last value is for subtle shadows*/
+        &::after {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+    &:active,
+    &:focus {
+        outline: none; //for the button element
+        transform: translateY(-1px); /*in relation to initial &:link state*/
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2); /*to reduce amount of shadow when active*/
+    }
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+
+    
+
+    /*this is the start for the scale up animation*/
+    &::after { /*psuedo element
+        this creates a virtual button underneath our already made button*/
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute; /*to put it behind our button use absolute.
+        absolute positioning needs to have a reference, and the reference
+        is the first element with a relative postion that it can find. In
+        this case it would be header, but we want it to be the button so 
+        we set the &:visited to relative */
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+
+    &--animated {
+        animation: moveinbottom 2s ease-out .75s; /*this delays it from the other animations .75s*/
+        animation-fill-mode: backwards; /*this makes it not show before 
+                                        animation starts or in other words, 
+                                        automatically applies moveinbottom's 
+                                        0% opacity to the button right off 
+                                        the start*/
+    }
+
+    /*********end header, button, scalu up animation, and text***********/
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary; //we create our own 
+                                                // line so we can set padding between the button and the underline
+        padding: 3px;
+        transition: all .2s; //for animation duration
+
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+
+
+    }
+
+    &:active {
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(0);
+    }
+}
